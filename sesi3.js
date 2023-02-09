@@ -51,4 +51,18 @@ console.log(hasilkata)
 
 
 
+function vowelsAndConsonants(s) {
+    let kata = "javascriptloops"
+    let vowels = "a, e, i, o , u"
+     let hasil = ""
+    
+  for(i = 0 ; i < kata.length ; i++){
+
+    if(kata.includes(hasil[i])){
+        console.log (hasil[i])
+    }
+    else hasil+= hasil[i] + '\n';
+    console.log( );
+
+  }
  
