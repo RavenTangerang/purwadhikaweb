@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @media screen and (max-width: 480px) { 
+            body {
+                background-color: red;
+            }
+        }
+
+        @media screen and (min-width: 480px) {
+            body {
+                background-color: rgb(49, 44, 44);
+                color: white;
+            }
+        
+            #content {
+                max-width: 960px;
+                display: grid;
+                grid-template-columns: 30% 30% 30%;
+                margin: 0;
+            }
+
+            #content div {
+                background-color: lightskyblue;
+                padding: 30px;
+            }
+
+            #content div:nth-child(even) {
+                background-color: grey;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class="kotak1">1</div>
+        <div class="kotak2">2</div>
+        <div class="kotak3">3</div>
+        <div class="kotak4">4</div>
+        <div class="kotak5">5</div>
+        <div class="kotak6">6</div>
+        <div class="kotak7">7</div>
+        <div class="kotak8">8</div>
+        <div class="kotak9">9</div>
+    </div>     
+</body>
+</html>
