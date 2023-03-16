@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stopwatch</title>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.1.2/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-200">
+  <div class="flex flex-col items-center justify-center h-screen">
+    <div class="bg-black p-10 rounded-lg shadow-lg">
+      <div class="text-white text-6xl font-bold text-center" id="time">00:00:00</div>
+      <div class="flex justify-center space-x-10 mt-5">
+        <button class="px-5 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600" id="startBtn">Start</button>
+        <button class="px-5 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600" id="stopBtn">Stop</button>
+        <button class="px-5 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600" id="resetBtn">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let startTime;
+    let intervalId;
+
+    const timeElement = document.getElementById('time');
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function start() {
+      startTime = new Date().getTime();
+      intervalId = setInterval(updateTime, 10);
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
+      resetBtn.disabled = true;
+    }
+
+    function stop() {
+      clearInterval(intervalId);
+      startBtn.disabled = false;
+      stopBtn.disabled = true;
+      resetBtn.disabled = false;
+    }
+
+    function reset() {
+      timeElement.textContent = '00:00:00';
+      startBtn.disabled = false;
+      stopBtn.disabled = true;
+      resetBtn.disabled = true;
+    }
+
+    function updateTime() {
+      const currentTime = new Date().getTime();
+      const elapsedTime = new Date(currentTime - startTime);
+      const minutes = elapsedTime.getMinutes().toString().padStart(2, '0');
+      const seconds = elapsedTime.getSeconds().toString().padStart(2, '0');
+      const milliseconds = Math.floor(elapsedTime.getMilliseconds() / 10).toString().padStart(2, '0');
+      timeElement.textContent = `${minutes}:${seconds}:${milliseconds}`;
+    }
+   
+    startBtn.addEventListener('click', start);
+    stopBtn.addEventListener('click', stop);
+    resetBtn.addEventListener('click', reset);
+  </script>
+</body>
+</html>
